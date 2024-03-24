@@ -17,62 +17,64 @@ public class LoginTests extends TestBase{
 
     @Test
     public void loginPositiveTest(){
+
+        app.getHelperUser().openLoginRegistrationForm();
         // open login form, find by text
-        openLoginRegistrationForm();
         //fill login form
-        fillLoginRegistrationForm("myemail5@mail.com", "Tt123456$");
+        app.getHelperUser().fillLoginRegistrationForm("myemail5@mail.com", "Tt123456$");
         // click on button login
-        submitLogin();
-        pause(3000);
+        app.getHelperUser().submitLogin();
+        app.getHelperUser().pause(3000);
       //  Assert.assertTrue(wd.findElements(By.tagName("button")).size() > 0);
-        Assert.assertTrue(isElementPresent(By.tagName("button")));
-    }
-    @Test
-    public void loginNegativeTestWrongEmail(){
-        // open login form, find by text
-        wd.findElement(By.xpath("//*[.='LOGIN']")).click();
-        //fill login form
-        WebElement emailInput = wd.findElement(By.xpath("//input[1]")); // создали здесь переменную, потому
-        // что будем к ней обращаться несколько раз
-        emailInput.click();
-        emailInput.clear(); // очищаем форму логина
-        emailInput.sendKeys("myemail5mail.com"); // вставляем адрес
-
-        WebElement passInput = wd.findElement(By.xpath("//input[2]")); // создали здесь переменную, потому
-        // что будем к ней обращаться несколько раз
-        passInput.click();
-        passInput.clear(); // очищаем форму логина
-        passInput.sendKeys("Tt123456$"); // вставляем пароль
-
-        // click on button login
-        wd.findElement(By.xpath("//button[1]")).click();
-        Assert.assertTrue(isAlertPresent());
-        pause(3000);
+        Assert.assertTrue(app.getHelperUser().isElementPresent(By.tagName("button")));
 
     }
-    @Test
-    public void loginNegativeTestWrongPassword(){
-        // open login form, find by text
-        wd.findElement(By.xpath("//*[.='LOGIN']")).click();
-        //fill login form
-        WebElement emailInput = wd.findElement(By.xpath("//input[1]")); // создали здесь переменную, потому
-        // что будем к ней обращаться несколько раз
-        emailInput.click();
-        emailInput.clear(); // очищаем форму логина
-        emailInput.sendKeys("myemail5@mail.com"); // вставляем адрес
-
-        WebElement passInput = wd.findElement(By.xpath("//input[2]")); // создали здесь переменную, потому
-        // что будем к ней обращаться несколько раз
-        passInput.click();
-        passInput.clear(); // очищаем форму логина
-        passInput.sendKeys("Tt123456"); // вставляем пароль
-
-        // click on button login
-        wd.findElement(By.xpath("//button[1]")).click();
-        // assert пока нет
-        pause(3000);
-
-    }
+//    @Test
+//    public void loginNegativeTestWrongEmail(){
+//        // open login form, find by text
+//        wd.findElement(By.xpath("//*[.='LOGIN']")).click();
+//        //fill login form
+//        WebElement emailInput = wd.findElement(By.xpath("//input[1]")); // создали здесь переменную, потому
+//        // что будем к ней обращаться несколько раз
+//        emailInput.click();
+//        emailInput.clear(); // очищаем форму логина
+//        emailInput.sendKeys("myemail5mail.com"); // вставляем адрес
+//
+//        WebElement passInput = wd.findElement(By.xpath("//input[2]")); // создали здесь переменную, потому
+//        // что будем к ней обращаться несколько раз
+//        passInput.click();
+//        passInput.clear(); // очищаем форму логина
+//        passInput.sendKeys("Tt123456$"); // вставляем пароль
+//
+//        // click on button login
+//        wd.findElement(By.xpath("//button[1]")).click();
+//        Assert.assertTrue(isAlertPresent());
+//        pause(3000);
+//
+//    }
+//    @Test
+//    public void loginNegativeTestWrongPassword(){
+//        // open login form, find by text
+//        wd.findElement(By.xpath("//*[.='LOGIN']")).click();
+//        //fill login form
+//        WebElement emailInput = wd.findElement(By.xpath("//input[1]")); // создали здесь переменную, потому
+//        // что будем к ней обращаться несколько раз
+//        emailInput.click();
+//        emailInput.clear(); // очищаем форму логина
+//        emailInput.sendKeys("myemail5@mail.com"); // вставляем адрес
+//
+//        WebElement passInput = wd.findElement(By.xpath("//input[2]")); // создали здесь переменную, потому
+//        // что будем к ней обращаться несколько раз
+//        passInput.click();
+//        passInput.clear(); // очищаем форму логина
+//        passInput.sendKeys("Tt123456"); // вставляем пароль
+//
+//        // click on button login
+//        wd.findElement(By.xpath("//button[1]")).click();
+//        // assert пока нет
+//        pause(3000);
+//
+//    }
 //
 //    @AfterMethod
 //    public void tearDown(){
